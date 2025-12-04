@@ -1,0 +1,16 @@
+{
+  "name": "secret-code-php-app",
+  "version": "1.0.0",
+  "description": "A simple PHP form that checks for a magic word (fred), deployable on Render using Nixpacks.",
+  "main": "index.php",
+  "scripts": {
+    "start": "php -S 0.0.0.0:$PORT index.php"
+  },
+  "keywords": [
+    "php",
+    "render",
+    "magic-word"
+  ],
+  "author": "",
+  "license": "MIT"
+}
