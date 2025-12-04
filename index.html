@@ -5,8 +5,8 @@ $myInputText01 = '';
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get user input
-    $myInputText01 = $_POST['code'] ?? '';
+    // Get user input safely
+    $myInputText01 = isset($_POST['code']) ? $_POST['code'] : '';
 
     // Check the secret code
     if ($myInputText01 === 'fred') {
@@ -52,13 +52,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         <h2>Enter Secret Code</h2>
 
         <form method="POST">
-            <input type="text" name="code" placeholder="Enter code..." value="<?= htmlspecialchars($myInputText01); ?>" required>
+            <input type="text" name="code" placeholder="Enter code..." 
+                value="<?php echo htmlspecialchars($myInputText01); ?>" required>
             <br>
             <input type="submit" value="Submit">
         </form>
 
         <div style="margin-top:10px;">
-            <?= $checkResult ?>
+            <?php echo $checkResult; ?>
         </div>
     </div>
 </body>
