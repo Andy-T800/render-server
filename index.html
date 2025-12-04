@@ -5,11 +5,11 @@ $myInputText01 = '';
 
 // Check if form was submitted
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get user input safely
-    $myInputText01 = isset($_POST['code']) ? $_POST['code'] : '';
+    // Get user input safely and trim whitespace
+    $myInputText01 = isset($_POST['code']) ? trim($_POST['code']) : '';
 
-    // Check the secret code
-    if ($myInputText01 === 'fred') {
+    // Check the secret code (case-insensitive)
+    if (strtolower($myInputText01) === 'fred') {
         $checkResult = "<b style='color:green'>Access Granted!</b>";
     } else {
         $checkResult = "<span style='color:red'>Hint: try 'fred'</span>";
