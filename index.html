@@ -1,14 +1,18 @@
 <?php
-$secret = "fred";
-$message = "";
+// Initialize result message and input variable
+$checkResult = "<span style='color:red'>Hint: try 'fred'</span>";
+$myInputText01 = '';
 
-if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    $input = trim($_POST["code"] ?? "");
+// Check if form was submitted
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    // Get user input
+    $myInputText01 = $_POST['code'] ?? '';
 
-    if ($input === $secret) {
-        $message = "<p style='color: green;'>Access Granted!</p>";
+    // Check the secret code
+    if ($myInputText01 === 'fred') {
+        $checkResult = "<b style='color:green'>Access Granted!</b>";
     } else {
-        $message = "<p style='color: red;'>Wrong code. Hint: try fred</p>";
+        $checkResult = "<span style='color:red'>Hint: try 'fred'</span>";
     }
 }
 ?>
@@ -16,6 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 <html>
 <head>
     <title>Secret Code Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -47,12 +52,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <h2>Enter Secret Code</h2>
 
         <form method="POST">
-            <input type="text" name="code" placeholder="Enter code..." required>
+            <input type="text" name="code" placeholder="Enter code..." value="<?= htmlspecialchars($myInputText01); ?>" required>
             <br>
             <input type="submit" value="Submit">
         </form>
 
-        <?= $message ?>
+        <div style="margin-top:10px;">
+            <?= $checkResult ?>
+        </div>
     </div>
 </body>
 </html>
