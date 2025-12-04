@@ -4,7 +4,7 @@
   "description": "A simple PHP form that checks for a magic word (fred), deployable on Render using Nixpacks.",
   "main": "index.php",
   "scripts": {
-    "start": "php -S 0.0.0.0:$PORT index.php"
+    "start": "php -S 0.0.0.0:$PORT"
   },
   "keywords": [
     "php",
